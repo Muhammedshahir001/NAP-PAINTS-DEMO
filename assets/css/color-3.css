@@ -1,0 +1,8 @@
+:root {
+    --austry-base: #e8a246;
+    --austry-base-rgb: 232, 162, 70;
+}
+
+.preloader__image {
+    background-image: url(../images/loader-1.png);
+}

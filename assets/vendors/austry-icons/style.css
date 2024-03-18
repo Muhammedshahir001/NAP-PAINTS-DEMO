@@ -1,0 +1,378 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('fonts/icomoon.eot?orkqwr');
+  src: url('fonts/icomoon.eot?orkqwr#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?orkqwr') format('truetype'),
+    url('fonts/icomoon.woff?orkqwr') format('woff'),
+    url('fonts/icomoon.svg?orkqwr#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+.icon-magnifying-glass:before {
+  content: "\e900";
+}
+
+.icon-shopping-cart:before {
+  content: "\e901";
+}
+
+.icon-right-arrow:before {
+  content: "\e902";
+}
+
+.icon-up-arrow:before {
+  content: "\e903";
+}
+
+.icon-down-arrow:before {
+  content: "\e904";
+}
+
+.icon-left-arrow:before {
+  content: "\e905";
+}
+
+.icon-phone-ringing:before {
+  content: "\e906";
+}
+
+.icon-email:before {
+  content: "\e907";
+}
+
+.icon-clock:before {
+  content: "\e908";
+}
+
+.icon-planet-earth:before {
+  content: "\e909";
+}
+
+.icon-quality:before {
+  content: "\e90a";
+}
+
+.icon-factory:before {
+  content: "\e90b";
+}
+
+.icon-office:before {
+  content: "\e90c";
+}
+
+.icon-workers:before {
+  content: "\e90d";
+}
+
+.icon-engineering:before {
+  content: "\e90e";
+}
+
+.icon-house:before {
+  content: "\e90f";
+}
+
+.icon-appartments:before {
+  content: "\e910";
+}
+
+.icon-telephone:before {
+  content: "\e911";
+}
+
+.icon-power-plant:before {
+  content: "\e912";
+}
+
+.icon-factory-1:before {
+  content: "\e913";
+}
+
+.icon-solar-energy:before {
+  content: "\e914";
+}
+
+.icon-solar-energy-1:before {
+  content: "\e915";
+}
+
+.icon-chat:before {
+  content: "\e916";
+}
+
+.icon-solar-energy-2:before {
+  content: "\e917";
+}
+
+.icon-electric-generator:before {
+  content: "\e918";
+}
+
+.icon-plug:before {
+  content: "\e919";
+}
+
+.icon-renewable-energy:before {
+  content: "\e91a";
+}
+
+.icon-renewable-energy-1:before {
+  content: "\e91b";
+}
+
+.icon-atomic-energy:before {
+  content: "\e91c";
+}
+
+.icon-green-power:before {
+  content: "\e91d";
+}
+
+.icon-trophy:before {
+  content: "\e91e";
+}
+
+.icon-success:before {
+  content: "\e91f";
+}
+
+.icon-employee:before {
+  content: "\e920";
+}
+
+.icon-rating-stars:before {
+  content: "\e921";
+}
+
+.icon-engineer:before {
+  content: "\e922";
+}
+
+.icon-bending:before {
+  content: "\e923";
+}
+
+.icon-welder:before {
+  content: "\e924";
+}
+
+.icon-helmet:before {
+  content: "\e925";
+}
+
+.icon-design:before {
+  content: "\e926";
+}
+
+.icon-automation:before {
+  content: "\e927";
+}
+
+.icon-setting:before {
+  content: "\e928";
+}
+
+.icon-pin:before {
+  content: "\e929";
+}
+
+.icon-refinery:before {
+  content: "\e92a";
+}
+
+.icon-petroleum:before {
+  content: "\e92b";
+}
+
+.icon-petrochemical:before {
+  content: "\e92c";
+}
+
+.icon-oil-rig:before {
+  content: "\e92d";
+}
+
+.icon-checked:before {
+  content: "\e92e";
+}
+
+.icon-oil:before {
+  content: "\e92f";
+}
+
+.icon-quote:before {
+  content: "\e930";
+}
+
+.icon-gas:before {
+  content: "\e931";
+}
+
+.icon-oil-rig-1:before {
+  content: "\e932";
+}
+
+.icon-telescope:before {
+  content: "\e933";
+}
+
+.icon-vaccine:before {
+  content: "\e934";
+}
+
+.icon-manufacturing:before {
+  content: "\e935";
+}
+
+.icon-cargo:before {
+  content: "\e936";
+}
+
+.icon-certified:before {
+  content: "\e937";
+}
+
+.icon-engineer-1:before {
+  content: "\e938";
+}
+
+.icon-factory-2:before {
+  content: "\e939";
+}
+
+.icon-maintenance:before {
+  content: "\e93a";
+}
+
+.icon-factory-3:before {
+  content: "\e93b";
+}
+
+.icon-file:before {
+  content: "\e93c";
+}
+
+.icon-rating:before {
+  content: "\e93d";
+}
+
+.icon-industrial:before {
+  content: "\e93e";
+}
+
+.icon-industrial-robot:before {
+  content: "\e93f";
+}
+
+.icon-phone-call:before {
+  content: "\e940";
+}
+
+.icon-crane:before {
+  content: "\e941";
+}
+
+.icon-trowel:before {
+  content: "\e942";
+}
+
+.icon-architect:before {
+  content: "\e943";
+}
+
+.icon-renewable-energy-2:before {
+  content: "\e944";
+}
+
+.icon-sun:before {
+  content: "\e945";
+}
+
+.icon-solar-energy-3:before {
+  content: "\e946";
+}
+
+.icon-ecosystem:before {
+  content: "\e947";
+}
+
+.icon-welder-1:before {
+  content: "\e948";
+}
+
+.icon-planning:before {
+  content: "\e949";
+}
+
+.icon-machine:before {
+  content: "\e94a";
+}
+
+.icon-pipe:before {
+  content: "\e94b";
+}
+
+.icon-oil-industry:before {
+  content: "\e94c";
+}
+
+.icon-maintenance-1:before {
+  content: "\e94d";
+}
+
+.icon-biotechnology:before {
+  content: "\e94e";
+}
+
+.icon-production:before {
+  content: "\e94f";
+}
+
+.icon-respiratory:before {
+  content: "\e950";
+}
+
+.icon-construction:before {
+  content: "\e951";
+}
+
+.icon-drilling-rig:before {
+  content: "\e952";
+}
+
+.icon-industry:before {
+  content: "\e953";
+}
+
+.icon-location:before {
+  content: "\e954";
+}
+
+.icon-contact:before {
+  content: "\e955";
+}
+
+.icon-entrepreneur:before {
+  content: "\e956";
+}
