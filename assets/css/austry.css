@@ -12013,6 +12013,7 @@ ul {
   position: relative;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
+  padding-right: 1rem;
 }
 
 .faq-one-accrodion .accrodion+.accrodion {
