@@ -7970,7 +7970,7 @@ ul {
   bottom: -60px;
   text-align: center;
   padding: 25px 21px 27px;
-  background-color: var(--austry-base);
+  background-color: #870a0e;
   transform: scaleY(0.0);
   transform-origin: center;
   transform-style: preserve-3d;
@@ -8011,7 +8011,7 @@ ul {
 .team-two__content {
   position: relative;
   display: block;
-  text-align: right;
+  text-align: center;
   margin-top: 18px;
 }
 
@@ -8049,7 +8049,7 @@ ul {
 .team-two__social-two li a {
   font-size: 18px;
   color: var(--austry-white);
-  background-color: var(--austry-base);
+  background-color: #870a0e;
   display: flex;
   align-items: center;
   justify-content: center;
