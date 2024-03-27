@@ -1492,6 +1492,7 @@ ul {
   transition: 500ms;
 }
 
+
 .mobile-nav__content .main-menu__list>li>a.expanded .mobile-nav__content .main-menu__list>li>ul>li>a.expanded .mobile-nav__content .main-menu__list>li>ul>li>ul>li>a.expanded {
   color: #870a0e;
 }
