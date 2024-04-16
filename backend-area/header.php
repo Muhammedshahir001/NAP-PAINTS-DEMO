@@ -48,12 +48,20 @@
               <span class="hide-menu">Add Products</span>
             </a>
           </li>
+            <li class="sidebar-item">
+            <a class="sidebar-link" href="../products/add-building_Products.php" aria-expanded="false">
+              <span>
+              <i class="ti ti-shopping-cart"></i>
+              </span>
+              <span class="hide-menu">Add Building Products</span>
+            </a>
+          </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="../backend-area/products/manage-automotive_Products.php" aria-expanded="false">
+            <a class="sidebar-link" href="../products/manage-building_Products.php" aria-expanded="false">
               <span>
               <i class="ti ti-eye"></i>
               </span>
-              <span class="hide-menu">Manage Products</span>
+              <span class="hide-menu">Manage Building Products</span>
             </a>
           </li>
           <li class="nav-small-cap">

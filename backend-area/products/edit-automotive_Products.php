@@ -31,7 +31,7 @@ if (isset($_POST['update'])) {
 
     // Check if new image is uploaded
     if (!empty($_FILES['productImg']['name'])) {
-        $productImage = handleFileUpload($_FILES['productImg'], "product_images/");
+        $productImage = handleFileUpload($_FILES['productImg'], "automotiveproduct_images/");
         // Prepare and execute update query with product image
         $sql = mysqli_prepare($con, "UPDATE automotive_Products SET productName = ?, productImage = ?, productPrice = ? WHERE id = ?");
         mysqli_stmt_bind_param($sql, "ssii", $productName, $productImage, $productPrice, $productId);
@@ -115,7 +115,7 @@ if ($query) {
                                             <label for="productImg" class="form-label">Product Image</label>
                                             <br>
                                             <?php if (!empty($product['productImage'])) { ?>
-                                                <img src="../products/product_images/<?php echo htmlentities($product['productImage']); ?>" width="500" height="500">
+                                                <img src="../products/automotiveproduct_images/<?php echo htmlentities($product['productImage']); ?>" width="500" height="500">
                                             <?php } else { ?>
                                                 <p style="color: red;">No Image Available</p>
                                             <?php } ?>

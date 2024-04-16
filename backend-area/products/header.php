@@ -45,7 +45,7 @@
               <span>
               <i class="ti ti-shopping-cart"></i>
               </span>
-              <span class="hide-menu">Add Products</span>
+              <span class="hide-menu">Add Automotive Products</span>
             </a>
           </li>
           <li class="sidebar-item">
@@ -53,7 +53,23 @@
               <span>
               <i class="ti ti-eye"></i>
               </span>
-              <span class="hide-menu">Manage Products</span>
+              <span class="hide-menu">Manage Automotive Products</span>
+            </a>
+          </li>
+           <li class="sidebar-item">
+            <a class="sidebar-link" href="../products/add-building_Products.php" aria-expanded="false">
+              <span>
+              <i class="ti ti-shopping-cart"></i>
+              </span>
+              <span class="hide-menu">Add Building Products</span>
+            </a>
+          </li>
+           <li class="sidebar-item">
+            <a class="sidebar-link" href="../products/manage-building_Products.php" aria-expanded="false">
+              <span>
+              <i class="ti ti-eye"></i>
+              </span>
+              <span class="hide-menu">Manage Building Products</span>
             </a>
           </li>
           <li class="nav-small-cap">
@@ -73,7 +89,7 @@
               <span>
               <i class="ti ti-eye"></i>
               </span>
-              <span class="hide-menu">Manage Brands</span>
+              <span class="hide-menu">Manage Blogs</span>
             </a>
           </li>
           <li class="nav-small-cap">

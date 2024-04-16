@@ -4,32 +4,32 @@ include('../include/connect.php');
 
 if (strlen($_SESSION['alogin']) == 0) {
     header('location:../index.php');
-    exit(); // Ensure script stops execution after redirection
+    exit();
 } else {
     date_default_timezone_set('Asia/Kolkata');
     $currentTime = date('d-m-Y h:i:s A', time());
 
     if (isset($_POST['update'])) {
-        $id = $_POST['id'];
+        $Id = $_POST['id'];
         $blogName = isset($_POST['blogName']) ? $_POST['blogName'] : '';
         $description = isset($_POST['description']) ? $_POST['description'] : '';
         $blogImg = isset($_FILES['blogImg']['name']) ? $_FILES['blogImg']['name'] : '';
-        $date = isset($_POST['date']) ? $_POST['date'] : ''; // Capture date from the form
+        $Date = isset($_POST['date']) ? $_POST['Date'] : '';
 
         // Upload new image if provided
         if (!empty($blogImg)) {
-            $targetDir = '../blogs/blog_images';
+            $targetDir = '../blogs/blog_images/';
             $targetFilePath = $targetDir . basename($blogImg);
             move_uploaded_file($_FILES['blogImg']['tmp_name'], $targetFilePath);
         }
 
-        // Update the blog details including the date field if provided
+        // Update blog details including the date field if provided
         if (!empty($blogImg)) {
-            $sql = mysqli_prepare($con, 'UPDATE `blog` SET blogName = ?, description = ?, blogImg = ?, date = ? WHERE id = ?');
-            mysqli_stmt_bind_param($sql, 'ssssi', $blogName, $description, $blogImg, $date, $id);
+            $sql = mysqli_prepare($con, 'UPDATE `blog` SET blogName = ?, description = ?, blogImg = ?, Date = ? WHERE Id = ?');
+            mysqli_stmt_bind_param($sql, 'ssssi', $blogName, $description, $blogImg, $Date, $Id);
         } else {
-            $sql = mysqli_prepare($con, 'UPDATE `blog` SET blogName = ?, description = ?, date = ? WHERE id = ?');
-            mysqli_stmt_bind_param($sql, 'sssi', $blogName, $description, $date, $id);
+            $sql = mysqli_prepare($con, 'UPDATE `blog` SET blogName = ?, description = ?, Date = ? WHERE Id = ?');
+            mysqli_stmt_bind_param($sql, 'sssi', $blogName, $description, $date, $Id);
         }
 
         if (mysqli_stmt_execute($sql)) {
@@ -39,10 +39,13 @@ if (strlen($_SESSION['alogin']) == 0) {
         }
 
         mysqli_stmt_close($sql);
+
+        header('location: update-blogs.php?id=' . $Id); // Redirect after form submission
+        exit();
     }
 
     $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-    $query = mysqli_query($con, "SELECT blogName, blogImg, description FROM blog WHERE id = '$id'");
+    $query = mysqli_query($con, "SELECT blogName, blogImg, description, Date FROM blog WHERE Id = '$Id'");
 
     if ($query) {
         $blog = mysqli_fetch_assoc($query);
@@ -83,9 +86,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <h5 class="card-title fw-semibold mb-4">Update Blogs</h5>
                             <div class="card">
                                 <div class="card-body">
-                                    <?php if (isset($_POST['update'])) { ?>
+                                    <?php if (isset($_SESSION['msg'])) { ?>
                                     <div class="alert alert-success" role="alert">
-                                        <strong>Well done!</strong> <?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ''); ?>
+                                        <strong>Success:</strong> <?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ''); ?>
                                         <button type="button" style="float: right;" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
                                     <?php } ?>
@@ -103,14 +106,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         </div>
                                         <div class="mb-3">
                                             <label for="date" class="form-label">Date:</label>
-                                            <input type="date" name="date" class="form-control" id="date" value="<?php echo isset($blog['date']) ? $blog['date'] : ''; ?>">
+                                            <input type="date" name="date" class="form-control" id="date" value="<?php echo isset($blog['Date']) ? $blog['Date'] : ''; ?>">
                                         </div>
                                         <div class="mb-3">
                                             <label for="blogImg" class="form-label">Blog Image:</label>
                                             <br>
                                             <?php
                                             if (!empty($blog['blogImg'])) {
-                                                $imagePath = '../blogs/blog_images/' . htmlentities($blog['blogImg']);
+                                                $imagePath = '../blogs/blog_images' . htmlentities($blog['blogImg']);
                                                 if (file_exists($imagePath)) {
                                                     echo '<img src="' . $imagePath . '" width="500" height="500">';
                                                 } else {

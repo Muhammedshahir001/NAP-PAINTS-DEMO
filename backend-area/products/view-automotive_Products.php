@@ -62,7 +62,7 @@ else
                                         <div class="mb-3">
                                             <label for="ProductImage" class="form-label">Product Image</label>
                                             <br>
-                                            <img src="../products/product_images/<?php echo htmlentities($row['ProductImage']);?>" width="300" height="300">
+                                            <img src="../products/automotiveproduct_images/<?php echo htmlentities($row['ProductImage']);?>" width="300" height="300">
                                         </div>
                                         <?php
                                             }

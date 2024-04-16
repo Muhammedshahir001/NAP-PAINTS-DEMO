@@ -1,68 +1,47 @@
 <?php
 session_start();
-include( '../include/connect.php' );
+include('../include/connect.php');
 
-if ( strlen( $_SESSION[ 'alogin' ] ) == 0 ) {
-    header( 'location:../index.php' );
+if (strlen($_SESSION['alogin']) == 0) {
+    header('location:../index.php');
 } else {
-    date_default_timezone_set( 'Asia/Kolkata' );
-    // change according timezone
-    $currentTime = date( 'd-m-Y h:i:s A', time() );
+    date_default_timezone_set('Asia/Kolkata');
+    $currentTime = date('d-m-Y h:i:s A', time());
 
-    if ( isset( $_POST[ 'submit' ] ) ) {
-        $productcategory_id = $_POST[ 'productCategory' ];
+    if (isset($_POST['submit'])) {
+        $productName = $_POST['productName'];
+        $productPrice = $_POST['productPrice'];
+        $productImage = $_FILES['productImg']['name'];
 
-        // Fetch categoryName based on the selected id
-        $query = mysqli_prepare( $con, 'SELECT categoryName FROM category WHERE id = ?' );
-        mysqli_stmt_bind_param( $query, 'i', $productcategory_id );
-        if ( !mysqli_stmt_execute( $query ) ) {
-            die( 'Error executing query: ' . mysqli_error( $con ) );
+        // Get the maximum ID from the 'building_Products' table
+        $query = mysqli_prepare($con, 'SELECT MAX(id) AS pid FROM automotive_Products');
+        if (!mysqli_stmt_execute($query)) {
+            die('Error executing query: ' . mysqli_error($con));
         }
-        $result = mysqli_stmt_get_result( $query );
-        $row = mysqli_fetch_assoc( $result );
-        $productCategory = $row[ 'categoryName' ];
-        mysqli_stmt_close( $query );
+        $result = mysqli_stmt_get_result($query);
+        $row = mysqli_fetch_assoc($result);
+        $maxId = $row['pid'] + 1;
+        mysqli_stmt_close($query);
 
-        $productName = $_POST[ 'productName' ];
-
-        $productPrice = $_POST[ 'productPrice' ];
-
-        $productImage = $_FILES[ 'productImg' ][ 'name' ];
-
-        // Get the maximum ID from the 'rice-products' table
-        $query = mysqli_prepare( $con, 'SELECT MAX(id) AS pid FROM automotive_Products' );
-        if ( !mysqli_stmt_execute( $query ) ) {
-            die( 'Error executing query: ' . mysqli_error( $con ) );
-        }
-        $result = mysqli_stmt_get_result( $query );
-        $row = mysqli_fetch_assoc( $result );
-        $maxId = $row[ 'pid' ] + 1;
-        // Increment the max ID by 1
-        mysqli_stmt_close( $query );
-
-        move_uploaded_file( $_FILES[ 'productImg' ][ 'tmp_name' ], 'automotiveproduct_images/' . $_FILES[ 'productImg' ][ 'name' ] );
+        move_uploaded_file($_FILES['productImg']['tmp_name'], 'automotiveproduct_images/' . $_FILES['productImg']['name']);
 
         // Use prepared statement to insert data
-        $sql = mysqli_prepare(
-            $con,
-            'INSERT INTO automotive_Products (id, productCategory, productName,  productPrice, productImage) VALUES (?, ?, ?, ?, ?)'
-        );
-        if ( !$sql ) {
-            die( 'Error preparing statement: ' . mysqli_error( $con ) );
+        $sql = mysqli_prepare($con, 'INSERT INTO automotive_Products (id, productName, productPrice, productImage) VALUES (?, ?, ?, ?)');
+        if (!$sql) {
+            die('Error preparing statement: ' . mysqli_error($con));
         }
-        mysqli_stmt_bind_param( $sql, 'issss', $maxId, $productCategory, $productName, $productPrice, $productImage );
+        mysqli_stmt_bind_param($sql, 'isss', $maxId, $productName, $productPrice, $productImage);
 
-        if ( mysqli_stmt_execute( $sql ) ) {
-            $_SESSION[ 'msg' ] = 'Product Inserted Successfully !!';
+        if (mysqli_stmt_execute($sql)) {
+            $_SESSION['msg'] = 'Product Inserted Successfully !!';
         } else {
-            $_SESSION[ 'msg' ] = 'Error: ' . mysqli_error( $con );
+            $_SESSION['msg'] = 'Error: ' . mysqli_error($con);
         }
 
-        mysqli_stmt_close( $sql );
+        mysqli_stmt_close($sql);
     }
 }
 ?>
-
 <!doctype html>
 <html lang = 'en'>
 
@@ -117,20 +96,6 @@ data-sidebar-position = 'fixed' data-header-position = 'fixed'>
         ?>
         <br />
         <form name = 'rice_product' method = 'post' enctype = 'multipart/form-data'>
-        <div class = 'mb-3'>
-        <label for = 'productCategory' class = 'form-label'>Product Category</label>
-        <select class = 'form-control' id = 'productCategory' name = 'productCategory' onChange = 'getSubcat(this.value);' required>
-        <option value = ''>Choose Category</option>
-        <?php $query = mysqli_query( $con, 'select * from category' );
-        while ( $row = mysqli_fetch_array( $query ) ) {
-            ?>
-            <option value = "<?php echo $row['id']; ?>"><?php echo $row[ 'categoryName' ];
-            ?></option>
-            <?php }
-            ?>
-            </select>
-            <div id = 'productCategory' class = 'form-text'>Choose the product category</div>
-            </div>
             <div class = 'mb-3'>
             <label for = 'productName' class = 'form-label'>Product Name</label>
             <input type = 'text' name = 'productName' class = 'form-control' id = 'productName' aria-describedby = 'productName' required>

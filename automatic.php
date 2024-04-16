@@ -144,7 +144,7 @@ include('./include/connect.php');
                           >
                         </li>
                         <li>
-                          <a href="bluding.php"
+                          <a href="building.php"
                             >Building materials Related Items</a
                           >
                         </li>
@@ -199,12 +199,12 @@ include('./include/connect.php');
 
         <div class="container">
           <div class="page-header__inner">
-            <h2>Services-1</h2>
+            <h2>Automotive Paint Related Materials</h2>
             <div class="thm-breadcrumb__box">
               <ul class="thm-breadcrumb list-unstyled">
                 <li><a href="index.html">Home</a></li>
                 <li><span>/</span></li>
-                <li>Services</li>
+                <li>Automotive Paint Related Materials</li>
               </ul>
             </div>
           </div>
@@ -228,7 +228,7 @@ include('./include/connect.php');
                                 <div class="services-one__img-box">
                                     <div class="services-one__img">
                                         <a href="automatic.php?pid=<?php echo htmlentities($row['id']); ?>">
-                                            <img src="backend-area/products/product_images/<?php echo htmlentities($row['ProductImage']); ?>" data-echo="backend-area/products/product_images/<?php echo htmlentities($row['ProductImage']); ?>" class="img-responsive" width="100%" height="100%" />
+                                            <img src="backend-area/products/automotiveproduct_images/<?php echo htmlentities($row['ProductImage']); ?>" data-echo="backend-area/products/automotiveproduct_images/<?php echo htmlentities($row['ProductImage']); ?>" class="img-responsive" width="100%" height="100%" />
                                         </a>
                                     </div>
                                 </div>
@@ -236,8 +236,7 @@ include('./include/connect.php');
                                     <h3 class="services-one__title">
                                         <a href="automatic.php?pid=<?php echo htmlentities($row['id']); ?>" class="smooth" title=""><?php echo htmlentities($row['ProductName']); ?></a>
                                     </h3>
-                                    <p class="services-one__category">Category: <?php echo htmlentities($row['productCategory']); ?></p>
-                                    <p class="services-one__price">Price: <?php echo htmlentities($row['productPrice']); ?></p>
+                                    <!-- <p class="services-one__price">Price: <?php echo htmlentities($row['productPrice']); ?></p> -->
                                 </div>
                             </div>
                         </div>

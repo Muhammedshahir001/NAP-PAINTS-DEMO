@@ -19,7 +19,7 @@ if(strlen($_SESSION['alogin']) == 0) {
 
         if($deleteQuery) {
                 // Delete product image file
-                $imagePath = "../products/product_images/" . $productImage; // Corrected path
+                $imagePath = "../products/automotiveproduct_images/" . $productImage; // Corrected path
                 if (file_exists($imagePath)) {
                     unlink($imagePath);
                 } else {

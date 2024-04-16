@@ -10,23 +10,23 @@ if(strlen($_SESSION['alogin']) == 0) {
 
     if(isset($_GET['del'])) {
         $id = intval($_GET['id']);
-        $query = mysqli_query($con, "SELECT *, DATE_FORMAT(date, '%d-%m-%Y') AS formatted_date FROM blog WHERE id='$id'");
+        $query = mysqli_query($con, "SELECT *, DATE_FORMAT(Date, '%Y-%m-%d') AS formatted_date FROM blog WHERE id='$id'");
         $row = mysqli_fetch_array($query);
-        $blogImg = $row['blogImg']; // Corrected field name
+        $blogImg = $row['blogImg'];
 
         // Delete record from the database
         $deleteQuery = mysqli_query($con, "DELETE FROM blog WHERE id = '$id'");
 
         if($deleteQuery) {
             // Delete product image file
-            $imagePath = "../blogs/blog_images/" . $blogImg; // Corrected path
+            $imagePath = "blog_images/" . $blogImg;
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             } else {
                 $_SESSION['delmsg'] = "Error: Image file not found!";
             }
 
-            $_SESSION['delmsg'] = "blog deleted successfully!";
+            $_SESSION['delmsg'] = "Blog deleted successfully!";
         } else {
             $_SESSION['delmsg'] = "Error: " . mysqli_error($con);
         }
@@ -58,68 +58,66 @@ if(strlen($_SESSION['alogin']) == 0) {
             <?php include('menu-bar.php') ?>
             <!-- Header End -->
             <div class="container-fluid">
-                <div class="container-fluid">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title fw-semibold mb-4">Manage Blogs</h5>
-                            <div class="card mb-0">
-                                <div class="card-body table-responsive">
-                                    <?php if(isset($_GET['del'])) {?>
-                                        <div class="alert alert-danger" role="alert">
-                                            <strong>Oh snap!</strong> <?php echo htmlentities($_SESSION['delmsg']);?><?php echo htmlentities($_SESSION['delmsg']="");?>
-                                            <button type="button" style="float: right;" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div>
-                                    <?php } ?>
-                                    <br />
-                                    <table class="table table-dark table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Blog Title</th>
-                                                <th scope="col">Blog Image</th>
-                                                <th scope="col">Description</th>
-                                                <th scope="col">Date</th> 
-                                                <th scope="col">View Blogs</th>
-                                                <th scope="col">Edit Blogs</th>
-                                                <th scope="col">Delete Blogs</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php 
-                                                $query = mysqli_query($con, "SELECT *, DATE_FORMAT(date, '%d-%m-%Y') AS formatted_date FROM blog;");
-                                                $cnt = 1;
-                                                while($row = mysqli_fetch_array($query)) {
-                                            ?>
-                                            <tr>
-                                                <th scope="row"><?php echo htmlentities($cnt);?></th>
-                                                <td><?php echo htmlentities($row['blogName']);?></td>
-                                                <td><?php echo htmlentities($row['blogImg']);?></td>
-                                                <td><?php echo htmlentities($row['description']);?></td>
-                                                <td><?php echo htmlentities($row['formatted_date']); ?></td> <!-- Display date value -->
-                                                <td>
-                                                    <a href="../blogs/view-blogs.php?id=<?php echo $row['id']?>" >
-                                                        <button class="btn btn-info btn-sm">View Blog</button>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="../blogs/edit-blogs.php?id=<?php echo $row['id']?>" >
-                                                        <button class="btn btn-info btn-sm">Edit Blog</button>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="manage-blogs.php?id=<?php echo $row['id']?>&del=delete" 
-                                                        onClick="return confirm('Are you sure you want to delete?')">
-                                                        <button class="btn btn-danger btn-sm">Delete Blog</button>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <?php 
-                                                $cnt=$cnt+1;
-                                                } 
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold mb-4">Manage Blogs</h5>
+                        <div class="card mb-0">
+                            <div class="card-body table-responsive">
+                                <?php if(isset($_SESSION['delmsg'])) {?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Oh snap!</strong> <?php echo htmlentities($_SESSION['delmsg']);?><?php unset($_SESSION['delmsg']);?>
+                                        <button type="button" style="float: right;" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                <?php } ?>
+                                <br />
+                                <table class="table table-dark table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Blog Title</th>
+                                            <th scope="col">Blog Image</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Date</th> 
+                                            <th scope="col">View Blogs</th>
+                                            <th scope="col">Edit Blogs</th>
+                                            <th scope="col">Delete Blogs</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                            $query = mysqli_query($con, "SELECT *, DATE_FORMAT(Date, '%Y-%m-%d') AS formatted_date FROM blog;");
+                                            $cnt = 1;
+                                            while($row = mysqli_fetch_array($query)) {
+                                        ?>
+                                        <tr>
+                                            <th scope="row"><?php echo htmlentities($cnt);?></th>
+                                            <td><?php echo htmlentities($row['blogName']);?></td>
+                                            <td><?php echo htmlentities($row['blogImg']);?></td>
+                                            <td><?php echo htmlentities($row['blogDescription']);?></td>
+                                            <td><?php echo htmlentities($row['formatted_date']); ?></td> <!-- Display date value -->
+                                            <td>
+                                                <a href="../blogs/view-blogs.php?id=<?php echo $row['id']?>" >
+                                                    <button class="btn btn-info btn-sm">View Blog</button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="../blogs/edit-blogs.php?id=<?php echo $row['id']?>" >
+                                                    <button class="btn btn-info btn-sm">Edit Blog</button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="manage-blogs.php?id=<?php echo $row['id']?>&del=delete" 
+                                                    onClick="return confirm('Are you sure you want to delete?')">
+                                                    <button class="btn btn-danger btn-sm">Delete Blog</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php 
+                                            $cnt=$cnt+1;
+                                            } 
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

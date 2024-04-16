@@ -25,6 +25,7 @@ if (strlen($_SESSION['alogin']) == 0) {
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
         <?php include('header.php') ?>
         <div class="body-wrapper">
+            <?php include('menu-bar.php') ?>
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-body">
@@ -39,7 +40,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         ?>
                                         <div class="mb-3">
                                             <label for="blogName" class="form-label">Blog Name</label>
-                                            <input type="text" name="blogName" class="form-control" id="blogName" aria-describedby="blogName" value="<?php echo htmlentities($row['blogName']); ?>" disabled="disabled">
+                                            <input type="text" name="blogName" class="form-control" id="blogName" aria-describedby="blogName" value="<?php echo htmlentities($row['blogName']); ?>" disabled>
                                         </div>
                                         <div class="mb-3">
                                             <label for="blogImage" class="form-label">Blog Image</label>
@@ -47,15 +48,12 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <img src="../blogs/blog_images/<?php echo htmlentities($row['blogImg']); ?>" width="300" height="300">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="description" class="form-label">Description</label>
-                                            <input type="text" name="description" class="form-control" id="description" aria-describedby="description" value="<?php echo htmlentities($row['description']); ?>" disabled="disabled">
+                                            <label for="blogDescription" class="form-label">Description</label>
+                                            <input type="text" name="description" class="form-control" id="blogDescription" aria-describedby="blogDescription" value="<?php echo htmlentities($row['blogDescription']); ?>" disabled>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="date" class="form-label">Date</label>
-                                            <?php
-                                            $formattedDate = isset($row['date']) ? date('Y-m-d', strtotime($row['date'])) : "Date Not Available";
-                                            echo '<input type="text" name="date" class="form-control" id="date" value="'.$formattedDate.'" disabled="disabled">';
-                                            ?>
+                                           <label for="date" class="form-label">Date</label>
+                                          <input type="date" class="form-control" id="creationDate" name="creationDate" value="<?php echo date('Y-m-d'); ?>" disabled>
                                         </div>
                                         <?php
                                     }
